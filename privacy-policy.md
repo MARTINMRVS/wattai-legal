@@ -1,8 +1,8 @@
 # Política de Privacidad — WattAI
 
 **Última actualización:** Marzo 2026  
-**Desarrollador:** Martín Rodríguez Vásquez  
-**Contacto:** [tu email aquí]
+**Desarrollador:** Martín Campos Hurtado 
+**Contacto:** macamps@gmail.com
 
 ## 1. Información que recopilamos
 WattAI recopila únicamente la información necesaria para 
@@ -27,16 +27,11 @@ y en reposo.
 
 ## 5. Derechos del usuario
 Puedes solicitar la eliminación de tus datos en cualquier 
-momento escribiendo a [tu email aquí].
+momento escribiendo a macamps@gmail.com
 
 ## 6. Contacto
-Para consultas sobre privacidad: [tu email aquí]
+Para consultas sobre privacidad: macamps@gmail.com
 ```
 
-4. 💾 Clic **"Commit changes"**
-5. ⚙️ Ve a **Settings → Pages**
-6. 🖱️ En **Source** selecciona **"main"** → **"Save"**
 
-La URL quedará:
-```
 https://martinmrvs.github.io/wattai-legal/privacy-policy
