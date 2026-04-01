@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Wattai — Descubre lo que gastas en electricidad</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+<style>
+:root{
+  --o:#E8923A;--og:rgba(232,146,58,0.12);--ob:rgba(232,146,58,0.2);
+  --bg:#080808;--s:#111;--s2:#171717;
+  --b:rgba(255,255,255,0.06);--t:#F0F0F0;--td:#777;--tdd:#3a3a3a;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--t);font-family:'DM Sans',sans-serif;overflow-x:hidden}
+#bgc{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:0;opacity:0.55}
+
+/* NAV */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:18px 48px;
+  background:rgba(8,8,8,0.92);backdrop-filter:blur(20px);
+  border-bottom:1px solid var(--b);
+}
+.lmark{
+  width:38px;height:38px;border-radius:10px;
+  background:linear-gradient(145deg,#f0a040,#E8923A,#d4782a);
+  display:flex;align-items:center;justify-content:center;
+  box-shadow:0 2px 16px rgba(232,146,58,0.4);
+  flex-shrink:0;
+}
+.ltxt{font-family:'Syne',sans-serif;font-weight:800;font-size:20px;letter-spacing:-0.5px;color:var(--t);}
+.logo{color:var(--t);}
+.ltxt span{color:var(--o)}
+.logo{display:flex;align-items:center;gap:10px;text-decoration:none}
+.nav-r{display:flex;align-items:center;gap:14px}
+.nl{font-size:14px;color:var(--td);text-decoration:none;transition:color .2s}
+.nl:hover{color:var(--t)}
+.nb{
+  background:var(--o);color:#000;
+  font-weight:500;font-size:13px;padding:9px 20px;
+  border-radius:100px;text-decoration:none;transition:all .2s;
+  display:inline-flex;align-items:center;gap:6px;
+}
+.nb:hover{background:#f5a94a;transform:translateY(-1px)}
+
+/* HERO */
+.hero{
+  position:relative;z-index:1;
+  min-height:100vh;display:flex;flex-direction:column;
+  align-items:center;justify-content:center;
+  text-align:center;padding:130px 24px 60px;
+}
+.badge{
+  display:inline-flex;align-items:center;gap:8px;
+  background:var(--og);border:1px solid var(--ob);
+  border-radius:100px;padding:6px 16px;
+  font-size:11px;color:var(--o);letter-spacing:1.5px;
+  font-family:'Syne',sans-serif;font-weight:600;text-transform:uppercase;
+  margin-bottom:40px;animation:up .7s ease both;
+}
+.badge::before{
+  content:'';width:5px;height:5px;border-radius:50%;
+  background:var(--o);animation:blink 2s infinite;
+}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.2}}
+
+.hn{
+  font-family:'Syne',sans-serif;font-weight:800;
+  font-size:clamp(44px,7vw,88px);
+  letter-spacing:-3px;line-height:.95;color:var(--o);
+  text-shadow:0 0 80px rgba(232,146,58,.2);
+  animation:up .7s .05s ease both;
+}
+.hnl{
+  font-size:clamp(11px,1.8vw,14px);color:var(--td);
+  letter-spacing:2.5px;font-weight:300;margin-top:14px;
+  animation:up .7s .1s ease both;
+}
+.hdiv{
+  width:1px;height:44px;background:var(--ob);
+  margin:32px auto;animation:up .7s .15s ease both;
+}
+h1{
+  font-family:'Syne',sans-serif;font-weight:800;
+  font-size:clamp(26px,5vw,58px);letter-spacing:-1.5px;line-height:1.05;
+  max-width:720px;animation:up .7s .2s ease both;
+}
+h1 em{font-style:normal;color:var(--o)}
+.hsub{
+  font-size:clamp(14px,2vw,18px);color:var(--td);font-weight:300;
+  max-width:460px;margin:20px auto 40px;line-height:1.75;
+  animation:up .7s .25s ease both;
+}
+.cta-row{display:flex;gap:12px;flex-wrap:wrap;justify-content:center;animation:up .7s .3s ease both}
+.bp{
+  display:inline-flex;align-items:center;gap:9px;
+  background:var(--o);color:#000;font-weight:500;font-size:15px;
+  padding:15px 30px;border-radius:100px;text-decoration:none;
+  box-shadow:0 8px 32px rgba(232,146,58,.3);transition:all .2s;
+}
+.bp:hover{background:#f5a94a;transform:translateY(-2px);box-shadow:0 14px 44px rgba(232,146,58,.4)}
+.bg{
+  display:inline-flex;align-items:center;gap:8px;
+  background:transparent;color:var(--td);font-size:15px;
+  padding:15px 28px;border-radius:100px;text-decoration:none;
+  border:1px solid var(--b);transition:all .2s;
+}
+.bg:hover{border-color:rgba(255,255,255,.18);color:var(--t)}
+@keyframes up{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:translateY(0)}}
+
+/* PHONES */
+.phones{
+  position:relative;z-index:1;
+  padding:30px 24px 80px;
+  display:flex;justify-content:center;align-items:flex-end;gap:16px;
+  flex-wrap:wrap;animation:up .9s .4s ease both;
+}
+.ph{
+  width:228px;height:466px;border-radius:36px;overflow:hidden;
+  background:var(--s);flex-shrink:0;
+  border:1px solid rgba(255,255,255,.07);
+  box-shadow:0 40px 80px rgba(0,0,0,.8),0 0 0 1px rgba(255,255,255,.03);
+}
+.ph.c{
+  width:252px;height:514px;
+  box-shadow:0 60px 120px rgba(0,0,0,.9),0 0 60px rgba(232,146,58,.08),0 0 0 1px rgba(255,255,255,.05);
+  transform:translateY(-16px);
+}
+.pi{
+  width:100%;height:100%;
+  background:#080810;
+  display:flex;flex-direction:column;
+  padding:22px 14px 18px;gap:9px;
+}
+/* Result screen */
+.sl{font-size:8px;letter-spacing:2px;color:var(--o);font-family:'Syne',sans-serif;font-weight:600;text-align:center}
+.sp{font-family:'Syne',sans-serif;font-weight:800;font-size:34px;color:var(--o);letter-spacing:-1.5px;line-height:1;text-align:center}
+.sn{font-size:10px;color:var(--td);text-align:center}
+.sg{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-top:2px}
+.sc{background:rgba(255,255,255,.03);border:1px solid var(--b);border-radius:9px;padding:8px}
+.scl{font-size:8px;color:var(--td);margin-bottom:3px}
+.scv{font-family:'Syne',sans-serif;font-weight:600;font-size:13px}
+.sc.hi .scv{color:var(--o)}
+.sbar{background:rgba(255,255,255,.03);border:1px solid var(--b);border-radius:9px;padding:9px}
+.sbr-l{display:flex;justify-content:space-between;font-size:8px;color:var(--td);margin-bottom:5px}
+.sbr-t{height:3px;background:rgba(255,255,255,.05);border-radius:2px}
+.sbr-f{height:3px;background:var(--o);border-radius:2px;width:11%}
+.sco{background:rgba(255,255,255,.02);border:1px solid var(--b);border-radius:9px;padding:7px;font-size:8px;color:#444}
+.sbtn{background:var(--o);border-radius:9px;padding:9px;text-align:center;font-family:'Syne',sans-serif;font-weight:600;font-size:10px;color:#000}
+.sbtn2{background:rgba(232,146,58,.08);border:1px solid var(--ob);border-radius:9px;padding:9px;text-align:center;font-family:'Syne',sans-serif;font-weight:600;font-size:10px;color:var(--o)}
+/* Spaces */
+.ssh{display:flex;justify-content:space-between;margin-bottom:4px}
+.sst{font-family:'Syne',sans-serif;font-weight:700;font-size:13px}
+.sss{font-size:8px;color:var(--td);margin-top:2px}
+.spc{background:rgba(232,146,58,.05);border:1px solid var(--ob);border-radius:9px;padding:9px;display:flex;align-items:center;gap:7px;margin-bottom:5px}
+.spi{width:26px;height:26px;background:rgba(232,146,58,.12);border-radius:7px;display:flex;align-items:center;justify-content:center;font-size:12px;flex-shrink:0}
+.spn{font-family:'Syne',sans-serif;font-weight:600;font-size:10px}
+.spd{font-size:8px;color:var(--td);margin-top:1px}
+.spp{font-family:'Syne',sans-serif;font-weight:700;font-size:11px;color:var(--o);margin-left:auto}
+.stc{background:rgba(255,255,255,.02);border:1px solid var(--b);border-radius:9px;padding:9px;display:flex;justify-content:space-between;align-items:center}
+.stl{font-size:9px;color:var(--td)}
+.stp{font-family:'Syne',sans-serif;font-weight:800;font-size:20px;color:var(--o)}
+/* WattRide */
+.srh{display:flex;align-items:center;justify-content:space-between;margin-bottom:6px}
+.srt{font-family:'Syne',sans-serif;font-weight:700;font-size:13px}
+.srch{font-size:7px;background:rgba(232,146,58,.15);color:var(--o);border-radius:4px;padding:2px 5px;letter-spacing:1px}
+.sri{background:rgba(255,255,255,.04);border:1px solid var(--b);border-radius:8px;padding:7px 9px;font-size:9px;color:var(--td);margin-bottom:5px}
+.srcb{background:#6c5ce7;border-radius:8px;padding:8px;text-align:center;font-size:9px;color:#fff;margin-bottom:7px}
+.srr{background:#0d1a14;border:1px solid rgba(46,204,113,.2);border-radius:9px;padding:11px;text-align:center}
+.srrl{font-size:8px;color:#666;letter-spacing:1px;margin-bottom:3px}
+.srrp{font-family:'Syne',sans-serif;font-weight:800;font-size:30px;color:#2ECC71;letter-spacing:-1px;line-height:1}
+.srrs{font-size:8px;color:#666;margin-top:3px}
+.srmini{display:flex;gap:5px;margin-top:5px}
+.srmk{flex:1;background:rgba(255,255,255,.03);border:1px solid var(--b);border-radius:7px;padding:6px;text-align:center}
+.srml{font-size:8px;color:#555}
+.srmv{font-family:'Syne',sans-serif;font-weight:600;font-size:11px}
+
+/* STRIP */
+.strip{position:relative;z-index:1;background:var(--s);border-top:1px solid var(--b);border-bottom:1px solid var(--b);overflow:hidden}
+.si{display:flex;white-space:nowrap;animation:scroll 22s linear infinite;padding:14px 0}
+.sit{display:inline-flex;align-items:center;gap:10px;padding:0 36px;font-family:'Syne',sans-serif;font-weight:600;font-size:12px;color:var(--tdd);letter-spacing:.5px;border-right:1px solid var(--b)}
+.sd{width:4px;height:4px;border-radius:50%;background:var(--o);flex-shrink:0}
+@keyframes scroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+/* FEATURES */
+.fw{position:relative;z-index:1;padding:100px 24px}
+.fi{max-width:1100px;margin:0 auto}
+.stag{font-size:10px;letter-spacing:3px;color:var(--o);font-family:'Syne',sans-serif;font-weight:600;text-transform:uppercase;margin-bottom:14px}
+.sh{font-family:'Syne',sans-serif;font-weight:800;font-size:clamp(28px,5vw,50px);letter-spacing:-1.5px;line-height:1.05;max-width:540px;margin-bottom:60px}
+.sh em{font-style:normal;color:var(--o)}
+.fw2{border:1px solid var(--b);border-radius:20px;overflow:hidden}
+.fbig{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--b)}
+.fsm{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--b);border-top:1px solid var(--b)}
+.fc{background:var(--s);padding:36px 30px;transition:background .2s;position:relative;overflow:hidden}
+.fc:hover{background:var(--s2)}
+.fc::after{content:'';position:absolute;top:0;left:0;right:0;height:1.5px;background:linear-gradient(90deg,transparent,var(--o),transparent);opacity:0;transition:opacity .3s}
+.fc:hover::after{opacity:.8}
+.fi2{width:52px;height:52px;background:var(--og);border:1px solid var(--ob);border-radius:15px;display:flex;align-items:center;justify-content:center;font-size:24px;margin-bottom:26px}
+.fi3{width:40px;height:40px;background:rgba(232,146,58,.05);border:1px solid var(--b);border-radius:11px;display:flex;align-items:center;justify-content:center;font-size:18px;margin-bottom:18px}
+.ft1{font-family:'Syne',sans-serif;font-weight:700;font-size:20px;margin-bottom:10px;letter-spacing:-.3px}
+.ft2{font-family:'Syne',sans-serif;font-weight:700;font-size:15px;margin-bottom:8px}
+.fd{font-size:14px;color:var(--td);line-height:1.7}
+
+/* HOW */
+.hw{position:relative;z-index:1;background:var(--s);border-top:1px solid var(--b);border-bottom:1px solid var(--b);padding:100px 24px}
+.hwi{max-width:1100px;margin:0 auto}
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:48px;margin-top:60px}
+.snum{font-family:'Syne',sans-serif;font-weight:800;font-size:80px;letter-spacing:-4px;line-height:1;color:rgba(232,146,58,.1);margin-bottom:18px}
+.stt{font-family:'Syne',sans-serif;font-weight:700;font-size:19px;margin-bottom:10px}
+.std{font-size:14px;color:var(--td);line-height:1.7}
+
+/* PROOF */
+.pf{position:relative;z-index:1;padding:80px 24px;text-align:center}
+.pfi{max-width:800px;margin:0 auto}
+.pfq{font-style:italic;font-weight:300;font-size:clamp(18px,3vw,30px);line-height:1.55;margin-bottom:20px;letter-spacing:-.2px}
+.pfs{font-size:13px;color:var(--td)}
+
+/* STATS */
+.sts{position:relative;z-index:1;display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--b);border-bottom:1px solid var(--b)}
+.st{padding:48px 28px;text-align:center;border-right:1px solid var(--b)}
+.st:last-child{border-right:none}
+.stn{font-family:'Syne',sans-serif;font-weight:800;font-size:clamp(34px,5vw,52px);color:var(--o);letter-spacing:-2px;line-height:1}
+.stl{font-size:13px;color:var(--td);margin-top:8px}
+
+/* CTA */
+.ct{position:relative;z-index:1;padding:120px 24px;text-align:center;overflow:hidden}
+.ct::before{content:'';position:absolute;bottom:-200px;left:50%;transform:translateX(-50%);width:700px;height:700px;background:radial-gradient(circle,rgba(232,146,58,.07) 0%,transparent 65%);pointer-events:none}
+.cth{font-family:'Syne',sans-serif;font-weight:800;font-size:clamp(34px,6vw,70px);letter-spacing:-2px;line-height:1;max-width:680px;margin:0 auto 18px}
+.cth em{font-style:normal;color:var(--o)}
+.cts{font-size:17px;color:var(--td);margin-bottom:40px;font-weight:300}
+.ctn{font-size:12px;color:var(--tdd);margin-top:20px}
+
+/* FOOTER */
+footer{position:relative;z-index:1;border-top:1px solid var(--b);padding:28px 48px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:14px}
+.fl{display:flex;align-items:center;gap:9px;text-decoration:none}
+.flm{width:28px;height:28px;border-radius:8px;background:linear-gradient(135deg,#f7b05a,#E8923A,#c4722a);display:flex;align-items:center;justify-content:center;font-family:'Syne',sans-serif;font-weight:800;font-size:14px;color:#000}
+.flt{font-family:'Syne',sans-serif;font-weight:700;font-size:15px;color:var(--t)}
+.fls{display:flex;gap:22px}
+.fls a{font-size:12px;color:var(--td);text-decoration:none;transition:color .2s}
+.fls a:hover{color:var(--t)}
+.fc2{font-size:11px;color:var(--tdd)}
+
+/* RESPONSIVE */
+@media(max-width:900px){
+  nav{padding:14px 20px}
+  .nl{display:none}
+  .fbig{grid-template-columns:1fr}
+  .fsm{grid-template-columns:1fr 1fr}
+  .steps{grid-template-columns:1fr;gap:32px}
+  .sts{grid-template-columns:1fr 1fr}
+  .st{border-right:none;border-bottom:1px solid var(--b)}
+  .st:last-child,.st:nth-child(2){border-bottom:none}
+  footer{flex-direction:column;text-align:center;padding:20px}
+  .phones .ph:not(.c){display:none}
+}
+@media(max-width:560px){.fsm{grid-template-columns:1fr}}
+</style>
+
+</head>
+<body>
+
+<canvas id="bgc"></canvas>
+
+<nav>
+  <a href="#" class="logo">
+    <div class="lmark">
+      <svg width="24" height="16" viewBox="0 0 24 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M2 2C2 2 5 14 6.5 14C8 14 10 6 12 6C14 6 16 14 17.5 14C19 14 22 2 22 2" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </div>
+    <span class="ltxt">Watt<span>ai</span></span>
+  </a>
+  <div class="nav-r">
+    <a href="#features" class="nl">Funciones</a>
+    <a href="#download" class="nb">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+      Descargar gratis
+    </a>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="badge">Ya disponible en App Store</div>
+  <div class="hn">$14.622</div>
+  <div class="hnl">LO QUE GASTA TU REFRIGERADOR AL MES</div>
+  <div class="hdiv"></div>
+  <h1>Descubre lo que te cobra<br>de mas tu <em>electricidad</em></h1>
+  <p class="hsub">Escanea cualquier aparato con la camara de tu celular y conoce el costo exacto al instante. Sin conjeturas.</p>
+  <div class="cta-row">
+    <a href="#download" class="bp" id="download">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+      Descargar en App Store
+    </a>
+    <a href="#features" class="bg">Ver como funciona</a>
+  </div>
+</section>
+
+<!-- PHONES -->
+<div class="phones">
+  <!-- Spaces -->
+  <div class="ph">
+    <div class="pi">
+      <div class="ssh"><div><div class="sst">Mis espacios</div><div class="sss">3 espacios · 4 aparatos</div></div></div>
+      <div class="spc"><div class="spi">🏠</div><div><div class="spn">Mi casa</div><div class="spd">2 aparatos</div></div><div class="spp">$22.400</div></div>
+      <div class="spc"><div class="spi">💼</div><div><div class="spn">Oficina</div><div class="spd">1 aparato</div></div><div class="spp">$6.702</div></div>
+      <div class="spc"><div class="spi">⚡</div><div><div class="spn">Taller</div><div class="spd">1 aparato</div></div><div class="spp">$18.900</div></div>
+      <div style="height:1px;background:rgba(255,255,255,.04);margin:2px 0"></div>
+      <div class="stc"><div><div class="stl">Total hogar</div><div style="font-size:8px;color:#333;margin-top:2px">por mes</div></div><div class="stp">$48.002</div></div>
+    </div>
+  </div>
+
+  <!-- Result (main) -->
+  <div class="ph c">
+    <div class="pi">
+      <div class="sl">AL MES EN ELECTRICIDAD</div>
+      <div class="sp">$6.702</div>
+      <div class="sn">Hervidor electrico · 1650W · 1h/dia</div>
+      <div class="sg">
+        <div class="sc"><div class="scl">Por hora</div><div class="scv">$221</div></div>
+        <div class="sc"><div class="scl">Por dia</div><div class="scv">$223</div></div>
+        <div class="sc hi"><div class="scl">Por mes</div><div class="scv">$6.702</div></div>
+        <div class="sc hi"><div class="scl">Por ano</div><div class="scv">$81.472</div></div>
+      </div>
+      <div class="sbar"><div class="sbr-l"><span>% de tu boleta</span><span style="color:var(--o)">11%</span></div><div class="sbr-t"><div class="sbr-f"></div></div></div>
+      <div class="sco">CO2 estimado — 11.7 kg/mes · 140 kg/ano</div>
+      <div class="sbtn2">Comparar con otro aparato</div>
+      <div class="sbtn">Guardar en espacio</div>
+    </div>
+  </div>
+
+  <!-- WattRide -->
+  <div class="ph">
+    <div class="pi">
+      <div class="srh"><div class="srt">WattRide</div><div class="srch">BETA</div></div>
+      <div class="sri">Santiago, Chile</div>
+      <div class="sri">Algarrobo, Chile</div>
+      <div class="srcb">Calcular ruta</div>
+      <div class="srr">
+        <div class="srrl">PAGAS TU</div>
+        <div class="srrp">$11.216</div>
+        <div class="srrs">por persona · 104 km · 7.6 L</div>
+      </div>
+      <div class="srmini">
+        <div class="srmk"><div class="srml">distancia</div><div class="srmv">104 km</div></div>
+        <div class="srmk"><div class="srml">tiempo</div><div class="srmv">1h 28m</div></div>
+        <div class="srmk"><div class="srml">trafico</div><div class="srmv" style="color:#2ECC71">fluido</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- STRIP -->
+<div class="strip">
+  <div class="si">
+    <div class="sit"><div class="sd"></div>Escaneo con IA</div>
+    <div class="sit"><div class="sd"></div>40+ paises</div>
+    <div class="sit"><div class="sd"></div>550+ modelos de autos</div>
+    <div class="sit"><div class="sd"></div>WattRide</div>
+    <div class="sit"><div class="sd"></div>Gas vs Electrico</div>
+    <div class="sit"><div class="sd"></div>Mis Espacios</div>
+    <div class="sit"><div class="sd"></div>CO2 estimado</div>
+    <div class="sit"><div class="sd"></div>Descarga gratis</div>
+    <div class="sit"><div class="sd"></div>Escaneo con IA</div>
+    <div class="sit"><div class="sd"></div>40+ paises</div>
+    <div class="sit"><div class="sd"></div>550+ modelos de autos</div>
+    <div class="sit"><div class="sd"></div>WattRide</div>
+    <div class="sit"><div class="sd"></div>Gas vs Electrico</div>
+    <div class="sit"><div class="sd"></div>Mis Espacios</div>
+    <div class="sit"><div class="sd"></div>CO2 estimado</div>
+    <div class="sit"><div class="sd"></div>Descarga gratis</div>
+  </div>
+</div>
+
+<!-- FEATURES -->
+<div class="fw" id="features">
+  <div class="fi">
+    <div class="stag">Funciones</div>
+    <div class="sh">Todo lo que necesitas<br>para <em>entender</em> tu consumo</div>
+    <div class="fw2">
+      <div class="fbig">
+        <div class="fc">
+          <div class="fi2"><svg width="26" height="26" viewBox="0 0 24 24" fill="none"><path d="M13 2L4.5 13.5H12L11 22L19.5 10.5H12L13 2Z" stroke="#E8923A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+          <div class="ft1">Escanea cualquier aparato</div>
+          <div class="fd">Apunta la camara al aparato o a su etiqueta de watts. La IA identifica el modelo, extrae el consumo y calcula el costo exacto en tu moneda local — en menos de 5 segundos. Sin necesidad de ingresar datos manualmente.</div>
+        </div>
+        <div class="fc">
+          <div class="fi2"><svg width="26" height="26" viewBox="0 0 24 24" fill="none"><path d="M5 17H3a2 2 0 01-2-2V5a2 2 0 012-2h11a2 2 0 012 2v3m0 0h3l3 3v4h-3m-3-7v7m0 0H9m9 0a2 2 0 11-4 0 2 2 0 014 0zM7 17a2 2 0 11-4 0 2 2 0 014 0z" stroke="#E8923A" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+          <div class="ft1">WattRide — divide el viaje</div>
+          <div class="fd">Ingresa origen y destino, selecciona tu auto y Wattai calcula el costo real en bencina. Dividelo entre los pasajeros al instante. Ideal para carpooling, viajes de fin de semana y gastos compartidos entre amigos.</div>
+        </div>
+      </div>
+      <div class="fsm">
+        <div class="fc">
+          <div class="fi3"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z" stroke="#E8923A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M9 22V12h6v10" stroke="#E8923A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+          <div class="ft2">Mis Espacios</div>
+          <div class="fd">Organiza aparatos por habitacion. Ve el costo total de tu casa de un vistazo.</div>
+        </div>
+        <div class="fc">
+          <div class="fi3"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M23 7l-7 5 7 5V7z" stroke="#E8923A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><rect x="1" y="5" width="15" height="14" rx="2" stroke="#E8923A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+          <div class="ft2">Gas vs Electrico</div>
+          <div class="fd">Compara tu auto actual versus un electrico. Con datos reales de 550+ modelos.</div>
+        </div>
+        <div class="fc">
+          <div class="fi3"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" stroke="#E8923A" stroke-width="2"/><path d="M2 12h20M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z" stroke="#E8923A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+          <div class="ft2">40+ paises</div>
+          <div class="fd">Tarifas electricas locales para Chile, Mexico, Argentina, Colombia y mas.</div>
+        </div>
+        <div class="fc">
+          <div class="fi3"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" stroke="#E8923A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+          <div class="ft2">Huella de CO2</div>
+          <div class="fd">Cuantos kilos de CO2 genera cada aparato. Tu impacto ambiental visible.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- HOW -->
+<div class="hw">
+  <div class="hwi">
+    <div class="stag">Como funciona</div>
+    <div class="sh">Tres pasos.<br>Resultado <em>inmediato</em></div>
+    <div class="steps">
+      <div>
+        <div class="snum">01</div>
+        <div class="stt">Apunta y escanea</div>
+        <div class="std">Abre la camara de Wattai y apunta al aparato o a su etiqueta de watts. No necesitas ingresar nada manualmente.</div>
+      </div>
+      <div>
+        <div class="snum">02</div>
+        <div class="stt">Ve el costo real</div>
+        <div class="std">En segundos ves el costo por hora, dia, mes y ano. Ajusta cuantas horas lo usas para mayor precision.</div>
+      </div>
+      <div>
+        <div class="snum">03</div>
+        <div class="stt">Guarda y controla</div>
+        <div class="std">Organiza por espacio, compara aparatos entre si y toma decisiones con informacion real. No con estimaciones.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- QUOTE -->
+<div class="pf">
+  <div class="pfi">
+    <div class="pfq">"No sabia que mi calefactor gastaba mas que el refrigerador. Wattai me lo mostro en 10 segundos."</div>
+    <div class="pfs">Usuario en Chile · TestFlight Beta</div>
+  </div>
+</div>
+
+<!-- STATS -->
+<div class="sts">
+  <div class="st"><div class="stn">550+</div><div class="stl">Modelos de autos</div></div>
+  <div class="st"><div class="stn">40+</div><div class="stl">Paises con tarifas</div></div>
+  <div class="st"><div class="stn">5s</div><div class="stl">Para el resultado</div></div>
+  <div class="st"><div class="stn">$0</div><div class="stl">Para empezar</div></div>
+</div>
+
+<!-- CTA -->
+<div class="ct">
+  <div class="cth">Empieza a<br>ahorrar <em>hoy</em></div>
+  <div class="cts">Gratis para descargar. Sin registro. Sin tarjeta.</div>
+  <div class="cta-row">
+    <a href="#" class="bp">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+      Descargar en App Store
+    </a>
+  </div>
+  <div class="ctn">Disponible para iPhone · iOS 16 o superior</div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <a href="#" class="fl">
+    <div class="flm">W</div>
+    <div class="flt">Wattai</div>
+  </a>
+  <div class="fls">
+    <a href="https://martinmrvs.github.io/wattai-legal/privacy-policy">Privacidad</a>
+    <a href="/cdn-cgi/l/email-protection#84e9f6f2f7e7e9f4f7c4e3e9e5ede8aae7ebe9">Contacto</a>
+  </div>
+  <div class="fc2">2026 Wattai</div>
+</footer>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+const c=document.getElementById('bgc');
+const x=c.getContext('2d');
+let W,H,P=[];
+function rsz(){W=c.width=innerWidth;H=c.height=innerHeight}
+class Pt{
+  constructor(){this.rst()}
+  rst(){
+    this.x=Math.random()*W;this.y=Math.random()*H;
+    this.vx=(Math.random()-.5)*.35;this.vy=(Math.random()-.5)*.35;
+    this.lf=Math.random();this.ml=.5+Math.random()*.5;
+    this.sz=.4+Math.random()*1.4;this.sp=.003+Math.random()*.004;
+    this.h=22+Math.random()*16;
+  }
+  upd(){
+    this.x+=this.vx;this.y+=this.vy;this.lf+=this.sp;
+    if(this.lf>this.ml||this.x<0||this.x>W||this.y<0||this.y>H)this.rst();
+  }
+  drw(){
+    const a=Math.sin((this.lf/this.ml)*Math.PI)*.28;
+    x.beginPath();x.arc(this.x,this.y,this.sz,0,Math.PI*2);
+    x.fillStyle=`hsla(${this.h},68%,58%,${a})`;x.fill();
+  }
+}
+function init(){rsz();P=[];for(let i=0;i<100;i++)P.push(new Pt())}
+function conn(){
+  const md=110;
+  for(let i=0;i<P.length;i++){
+    for(let j=i+1;j<P.length;j++){
+      const dx=P[i].x-P[j].x,dy=P[i].y-P[j].y;
+      const d=Math.sqrt(dx*dx+dy*dy);
+      if(d<md){
+        x.beginPath();x.moveTo(P[i].x,P[i].y);x.lineTo(P[j].x,P[j].y);
+        x.strokeStyle=`rgba(232,146,58,${(1-d/md)*.055})`;
+        x.lineWidth=.5;x.stroke();
+      }
+    }
+  }
+}
+let aid;
+function lp(){
+  x.clearRect(0,0,W,H);conn();
+  P.forEach(p=>{p.upd();p.drw()});
+  ai
