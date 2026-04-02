@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -17,7 +16,7 @@
 html{scroll-behavior:smooth}
 body{background:var(--bg);color:var(--t);font-family:'DM Sans',sans-serif;overflow-x:hidden}
 #bgc{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:0;opacity:0.55}
-
+ 
 /* NAV */
 nav{
   position:fixed;top:0;left:0;right:0;z-index:100;
@@ -47,7 +46,7 @@ nav{
   display:inline-flex;align-items:center;gap:6px;
 }
 .nb:hover{background:#f5a94a;transform:translateY(-1px)}
-
+ 
 /* HERO */
 .hero{
   position:relative;z-index:1;
@@ -68,7 +67,7 @@ nav{
   background:var(--o);animation:blink 2s infinite;
 }
 @keyframes blink{0%,100%{opacity:1}50%{opacity:.2}}
-
+ 
 .hn{
   font-family:'Syne',sans-serif;font-weight:800;
   font-size:clamp(44px,7vw,88px);
@@ -112,7 +111,7 @@ h1 em{font-style:normal;color:var(--o)}
 }
 .bg:hover{border-color:rgba(255,255,255,.18);color:var(--t)}
 @keyframes up{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:translateY(0)}}
-
+ 
 /* PHONES */
 .phones{
   position:relative;z-index:1;
@@ -179,14 +178,14 @@ h1 em{font-style:normal;color:var(--o)}
 .srmk{flex:1;background:rgba(255,255,255,.03);border:1px solid var(--b);border-radius:7px;padding:6px;text-align:center}
 .srml{font-size:8px;color:#555}
 .srmv{font-family:'Syne',sans-serif;font-weight:600;font-size:11px}
-
+ 
 /* STRIP */
 .strip{position:relative;z-index:1;background:var(--s);border-top:1px solid var(--b);border-bottom:1px solid var(--b);overflow:hidden}
 .si{display:flex;white-space:nowrap;animation:scroll 22s linear infinite;padding:14px 0}
 .sit{display:inline-flex;align-items:center;gap:10px;padding:0 36px;font-family:'Syne',sans-serif;font-weight:600;font-size:12px;color:var(--tdd);letter-spacing:.5px;border-right:1px solid var(--b)}
 .sd{width:4px;height:4px;border-radius:50%;background:var(--o);flex-shrink:0}
 @keyframes scroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
-
+ 
 /* FEATURES */
 .fw{position:relative;z-index:1;padding:100px 24px}
 .fi{max-width:1100px;margin:0 auto}
@@ -205,7 +204,7 @@ h1 em{font-style:normal;color:var(--o)}
 .ft1{font-family:'Syne',sans-serif;font-weight:700;font-size:20px;margin-bottom:10px;letter-spacing:-.3px}
 .ft2{font-family:'Syne',sans-serif;font-weight:700;font-size:15px;margin-bottom:8px}
 .fd{font-size:14px;color:var(--td);line-height:1.7}
-
+ 
 /* HOW */
 .hw{position:relative;z-index:1;background:var(--s);border-top:1px solid var(--b);border-bottom:1px solid var(--b);padding:100px 24px}
 .hwi{max-width:1100px;margin:0 auto}
@@ -213,20 +212,20 @@ h1 em{font-style:normal;color:var(--o)}
 .snum{font-family:'Syne',sans-serif;font-weight:800;font-size:80px;letter-spacing:-4px;line-height:1;color:rgba(232,146,58,.1);margin-bottom:18px}
 .stt{font-family:'Syne',sans-serif;font-weight:700;font-size:19px;margin-bottom:10px}
 .std{font-size:14px;color:var(--td);line-height:1.7}
-
+ 
 /* PROOF */
 .pf{position:relative;z-index:1;padding:80px 24px;text-align:center}
 .pfi{max-width:800px;margin:0 auto}
 .pfq{font-style:italic;font-weight:300;font-size:clamp(18px,3vw,30px);line-height:1.55;margin-bottom:20px;letter-spacing:-.2px}
 .pfs{font-size:13px;color:var(--td)}
-
+ 
 /* STATS */
 .sts{position:relative;z-index:1;display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--b);border-bottom:1px solid var(--b)}
 .st{padding:48px 28px;text-align:center;border-right:1px solid var(--b)}
 .st:last-child{border-right:none}
 .stn{font-family:'Syne',sans-serif;font-weight:800;font-size:clamp(34px,5vw,52px);color:var(--o);letter-spacing:-2px;line-height:1}
 .stl{font-size:13px;color:var(--td);margin-top:8px}
-
+ 
 /* CTA */
 .ct{position:relative;z-index:1;padding:120px 24px;text-align:center;overflow:hidden}
 .ct::before{content:'';position:absolute;bottom:-200px;left:50%;transform:translateX(-50%);width:700px;height:700px;background:radial-gradient(circle,rgba(232,146,58,.07) 0%,transparent 65%);pointer-events:none}
@@ -234,7 +233,7 @@ h1 em{font-style:normal;color:var(--o)}
 .cth em{font-style:normal;color:var(--o)}
 .cts{font-size:17px;color:var(--td);margin-bottom:40px;font-weight:300}
 .ctn{font-size:12px;color:var(--tdd);margin-top:20px}
-
+ 
 /* FOOTER */
 footer{position:relative;z-index:1;border-top:1px solid var(--b);padding:28px 48px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:14px}
 .fl{display:flex;align-items:center;gap:9px;text-decoration:none}
@@ -244,7 +243,7 @@ footer{position:relative;z-index:1;border-top:1px solid var(--b);padding:28px 48
 .fls a{font-size:12px;color:var(--td);text-decoration:none;transition:color .2s}
 .fls a:hover{color:var(--t)}
 .fc2{font-size:11px;color:var(--tdd)}
-
+ 
 /* RESPONSIVE */
 @media(max-width:900px){
   nav{padding:14px 20px}
@@ -260,18 +259,16 @@ footer{position:relative;z-index:1;border-top:1px solid var(--b);padding:28px 48
 }
 @media(max-width:560px){.fsm{grid-template-columns:1fr}}
 </style>
-
+ 
 </head>
 <body>
-
+ 
 <canvas id="bgc"></canvas>
-
+ 
 <nav>
   <a href="#" class="logo">
     <div class="lmark">
-      <svg width="24" height="16" viewBox="0 0 24 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M2 2C2 2 5 14 6.5 14C8 14 10 6 12 6C14 6 16 14 17.5 14C19 14 22 2 22 2" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
-      </svg>
+      <img src="https://martinmrvs.github.io/wattai-legal/logo_wattai.png" width="30" height="30" style="border-radius:8px;display:block;" alt="Wattai" />
     </div>
     <span class="ltxt">Watt<span>ai</span></span>
   </a>
@@ -287,17 +284,12 @@ footer{position:relative;z-index:1;border-top:1px solid var(--b);padding:28px 48
     </a>
   </div>
 </nav>
-
-<section class="hero">
+ 
+<section class="hero" style="padding-top:140px;padding-bottom:60px;">
   <div class="badge">Ya disponible en App Store</div>
-  <h1>Tu boleta tiene<br>un <em>culpable.</em><br>Encuentralo.</h1>
-  <div style="margin-top:48px;">
-    <div class="hn">$14.622</div>
-    <div class="hnl">LO QUE GASTA TU REFRIGERADOR AL MES</div>
-  </div>
-  <div class="hdiv"></div>
-  <p class="hsub">Escanea cualquier aparato con la camara de tu celular y conoce el costo exacto al instante. Sin conjeturas.</p>
-  <div class="cta-row">
+  <h1 style="font-size:clamp(48px,10vw,110px);letter-spacing:-3px;margin-bottom:16px;">Empieza a<br>ahorrar <em>hoy</em></h1>
+  <p class="hsub">Gratis para descargar. Sin registro. Sin tarjeta.</p>
+  <div class="cta-row" style="margin-bottom:64px;">
     <a href="#download" class="bp">
       <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
       App Store
@@ -306,64 +298,29 @@ footer{position:relative;z-index:1;border-top:1px solid var(--b);padding:28px 48
       <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M3.18 23.76a2 2 0 001.94-.21l11.27-6.51-2.5-2.5-10.71 9.22zM20.65 9.22L17.1 7.17 14.28 10l2.82 2.82 3.57-2.06a1.93 1.93 0 000-3.54zM1.5.29A2 2 0 001 1.5v21a2 2 0 00.5 1.21l.07.06 11.76-11.76v-.27L1.57.23zM14.28 14l-2.95 2.95-8.15 8.15a2 2 0 001.94-.21L17.1 17l-2.82-3z"/></svg>
       Google Play
     </a>
-    <a href="#features" class="bg">Ver como funciona</a>
+  </div>
+  <div style="animation:up .9s .4s ease both;">
+    <div class="ph c" style="margin:0 auto;">
+      <div class="pi">
+        <div class="sl">AL MES EN ELECTRICIDAD</div>
+        <div class="sp">$6.702</div>
+        <div class="sn">Hervidor electrico · 1650W · 1h/dia</div>
+        <div class="sg">
+          <div class="sc"><div class="scl">Por hora</div><div class="scv">$221</div></div>
+          <div class="sc"><div class="scl">Por dia</div><div class="scv">$223</div></div>
+          <div class="sc hi"><div class="scl">Por mes</div><div class="scv">$6.702</div></div>
+          <div class="sc hi"><div class="scl">Por ano</div><div class="scv">$81.472</div></div>
+        </div>
+        <div class="sbar"><div class="sbr-l"><span>% de tu boleta</span><span style="color:var(--o)">11%</span></div><div class="sbr-t"><div class="sbr-f"></div></div></div>
+        <div class="sco">CO2 estimado — 11.7 kg/mes · 140 kg/ano</div>
+        <div class="sbtn2">Comparar con otro aparato</div>
+        <div class="sbtn">Guardar en espacio</div>
+      </div>
+    </div>
   </div>
 </section>
-
-<!-- PHONES -->
-<div class="phones">
-  <!-- Spaces -->
-  <div class="ph">
-    <div class="pi">
-      <div class="ssh"><div><div class="sst">Mis espacios</div><div class="sss">3 espacios · 4 aparatos</div></div></div>
-      <div class="spc"><div class="spi">🏠</div><div><div class="spn">Mi casa</div><div class="spd">2 aparatos</div></div><div class="spp">$22.400</div></div>
-      <div class="spc"><div class="spi">💼</div><div><div class="spn">Oficina</div><div class="spd">1 aparato</div></div><div class="spp">$6.702</div></div>
-      <div class="spc"><div class="spi">⚡</div><div><div class="spn">Taller</div><div class="spd">1 aparato</div></div><div class="spp">$18.900</div></div>
-      <div style="height:1px;background:rgba(255,255,255,.04);margin:2px 0"></div>
-      <div class="stc"><div><div class="stl">Total hogar</div><div style="font-size:8px;color:#333;margin-top:2px">por mes</div></div><div class="stp">$48.002</div></div>
-    </div>
-  </div>
-
-  <!-- Result (main) -->
-  <div class="ph c">
-    <div class="pi">
-      <div class="sl">AL MES EN ELECTRICIDAD</div>
-      <div class="sp">$6.702</div>
-      <div class="sn">Hervidor electrico · 1650W · 1h/dia</div>
-      <div class="sg">
-        <div class="sc"><div class="scl">Por hora</div><div class="scv">$221</div></div>
-        <div class="sc"><div class="scl">Por dia</div><div class="scv">$223</div></div>
-        <div class="sc hi"><div class="scl">Por mes</div><div class="scv">$6.702</div></div>
-        <div class="sc hi"><div class="scl">Por ano</div><div class="scv">$81.472</div></div>
-      </div>
-      <div class="sbar"><div class="sbr-l"><span>% de tu boleta</span><span style="color:var(--o)">11%</span></div><div class="sbr-t"><div class="sbr-f"></div></div></div>
-      <div class="sco">CO2 estimado — 11.7 kg/mes · 140 kg/ano</div>
-      <div class="sbtn2">Comparar con otro aparato</div>
-      <div class="sbtn">Guardar en espacio</div>
-    </div>
-  </div>
-
-  <!-- WattRide -->
-  <div class="ph">
-    <div class="pi">
-      <div class="srh"><div class="srt">WattRide</div><div class="srch">BETA</div></div>
-      <div class="sri">Santiago, Chile</div>
-      <div class="sri">Algarrobo, Chile</div>
-      <div class="srcb">Calcular ruta</div>
-      <div class="srr">
-        <div class="srrl">PAGAS TU</div>
-        <div class="srrp">$11.216</div>
-        <div class="srrs">por persona · 104 km · 7.6 L</div>
-      </div>
-      <div class="srmini">
-        <div class="srmk"><div class="srml">distancia</div><div class="srmv">104 km</div></div>
-        <div class="srmk"><div class="srml">tiempo</div><div class="srmv">1h 28m</div></div>
-        <div class="srmk"><div class="srml">trafico</div><div class="srmv" style="color:#2ECC71">fluido</div></div>
-      </div>
-    </div>
-  </div>
-</div>
-
+ 
+ 
 <!-- STRIP -->
 <div class="strip">
   <div class="si">
@@ -385,7 +342,7 @@ footer{position:relative;z-index:1;border-top:1px solid var(--b);padding:28px 48
     <div class="sit"><div class="sd"></div>Descarga gratis</div>
   </div>
 </div>
-
+ 
 <!-- FEATURES -->
 <div class="fw" id="features">
   <div class="fi">
@@ -439,7 +396,7 @@ footer{position:relative;z-index:1;border-top:1px solid var(--b);padding:28px 48
     </div>
   </div>
 </div>
-
+ 
 <!-- HOW -->
 <div class="hw">
   <div class="hwi">
@@ -464,7 +421,7 @@ footer{position:relative;z-index:1;border-top:1px solid var(--b);padding:28px 48
     </div>
   </div>
 </div>
-
+ 
 <!-- QUOTE -->
 <div class="pf">
   <div class="pfi">
@@ -472,7 +429,7 @@ footer{position:relative;z-index:1;border-top:1px solid var(--b);padding:28px 48
     <div class="pfs">Usuario en Chile · TestFlight Beta</div>
   </div>
 </div>
-
+ 
 <!-- STATS -->
 <div class="sts">
   <div class="st"><div class="stn">550+</div><div class="stl">Modelos de autos</div></div>
@@ -480,9 +437,13 @@ footer{position:relative;z-index:1;border-top:1px solid var(--b);padding:28px 48
   <div class="st"><div class="stn">5s</div><div class="stl">Para el resultado</div></div>
   <div class="st"><div class="stn">$0</div><div class="stl">Para empezar</div></div>
 </div>
-
+ 
 <!-- CTA -->
-<div class="ct">
+<div class="ct" id="download">
+  <div style="margin-bottom:32px;">
+    <div class="hn" style="font-size:clamp(44px,7vw,88px);">$14.622</div>
+    <div class="hnl">LO QUE GASTA TU REFRIGERADOR AL MES</div>
+  </div>
   <div class="cth">Empieza a<br>ahorrar <em>hoy</em></div>
   <div class="cts">Gratis para descargar. Sin registro. Sin tarjeta.</div>
   <div class="cta-row">
@@ -498,13 +459,12 @@ footer{position:relative;z-index:1;border-top:1px solid var(--b);padding:28px 48
   <div style="margin-top:32px;padding-top:24px;border-top:1px solid rgba(255,255,255,0.05);">
     <div style="font-family:'Syne',sans-serif;font-weight:700;font-size:clamp(18px,3vw,28px);letter-spacing:-0.5px;color:var(--t);">Escanea. Descubre. Ahorra.</div>
   </div>
-  <div class="ctn" style="margin-top:12px;">Disponible para iOS · Android proximamente</div>
 </div>
-
+ 
 <!-- FOOTER -->
 <footer>
   <a href="#" class="fl">
-    <div class="flm">W</div>
+    <div class="flm"><img src="https://martinmrvs.github.io/wattai-legal/logo_wattai.png" width="28" height="28" style="border-radius:7px;display:block;" alt="Wattai" /></div>
     <div class="flt">Wattai</div>
   </a>
   <div class="fls">
@@ -513,7 +473,7 @@ footer{position:relative;z-index:1;border-top:1px solid var(--b);padding:28px 48
   </div>
   <div class="fc2">2026 Wattai</div>
 </footer>
-
+ 
 <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
 const c=document.getElementById('bgc');
 const x=c.getContext('2d');
